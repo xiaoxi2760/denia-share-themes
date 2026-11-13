@@ -15,7 +15,6 @@ import { ACCENT_PRESETS, prefs, applyPrefs, loadPrefs } from "../classic/prefs.j
 import { createPlatformIcon } from "./platform-icons.js";
 
 export { assetUrl, renderOptions, OUTPUT_KEYS, boolValue };
-
 export const api = defaultApi;
 
 export const $ = (selector, root = document) => root.querySelector(selector);
@@ -158,8 +157,11 @@ export const layoutName = (key) => ({
   magazine: "杂志排版",
   immersive: "沉浸封面",
   feed: "信息流",
-  denia: "达妮娅",
 }[key] || "标准卡片");
+
+/** 卡片风格跟随已启用的 WebUI 皮肤（已保存的 WEBUI_STYLE），不是布局、也不是页面主题。 */
+export const cardStyleName = (style) =>
+  (style === "denia" ? "达妮娅泡泡工坊皮肤" : "经典皮肤");
 
 export const intro = (eyebrow, title, sub, aside = "") =>
   `<section class="intro"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${sub}</p></div>${aside}</section>`;

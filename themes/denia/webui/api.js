@@ -14,16 +14,43 @@
 export const API_PREFIX = "/api/plug/astrbot_plugin_denia_share";
 export const PLUGIN_NAME = "astrbot_plugin_denia_share";
 
-/** 后端真实卡片设计枚举（见 core/card_renderer.py LAYOUT_NAMES / theme）。 */
-export const CARD_LAYOUTS = ["standard", "magazine", "immersive", "feed", "denia"];
+/** 后端真实卡片设计枚举（见 core/card_renderer.py LAYOUT_NAMES / theme）。
+ *
+ * 只有四种布局：standard / magazine / immersive / feed。
+ * 达妮娅不是第五种布局 —— 它是「启用哪个 WebUI 皮肤」决定的卡片风格，
+ * 跟随已保存的 WEBUI_STYLE，不在这里另开一个下拉。
+ */
+export const CARD_LAYOUTS = ["standard", "magazine", "immersive", "feed"];
 export const CARD_THEMES = ["dark", "light"];
 export const CARD_LAYOUT_LABELS = {
   standard: "标准卡片",
   magazine: "杂志排版",
   immersive: "沉浸封面",
   feed: "信息流",
-  denia: "达妮娅",
 };
+
+/** 卡片风格跟随已启用的 WebUI 皮肤；明暗由 RENDER_THEME 独立决定。 */
+export const CARD_STYLES = ["classic", "denia"];
+export const CARD_STYLE_LABELS = {
+  classic: "经典皮肤",
+  denia: "达妮娅泡泡工坊皮肤",
+};
+
+/** 旧版把达妮娅当成第五种布局；界面上按标准布局处理，不因此改写 WebUI 选择。 */
+const LEGACY_LAYOUTS = { denia: "standard" };
+
+/** 把任意历史/异常布局值归一到四种真实布局之一。 */
+export function normalizeLayout(value) {
+  const raw = String(value ?? "").trim().toLowerCase();
+  const mapped = LEGACY_LAYOUTS[raw] || raw;
+  return CARD_LAYOUTS.includes(mapped) ? mapped : "standard";
+}
+
+/** 已保存的 WEBUI_STYLE 决定卡片风格；只认配置值，不从当前 URL 或界面主题推断。 */
+export function cardStyle(values = {}) {
+  const raw = String(values?.WEBUI_STYLE ?? "").trim().toLowerCase();
+  return CARD_STYLES.includes(raw) ? raw : "classic";
+}
 
 /** 卡片配置键 → preview/sample 的外观参数名。这份映射必须与后端一致。 */
 export const PREVIEW_OVERRIDES = {
@@ -60,9 +87,7 @@ export function boolValue(value) {
 
 /** 从配置 values 还原真实的渲染开关与外观。 */
 export function renderOptions(values = {}) {
-  const layout = CARD_LAYOUTS.includes(String(values.RENDER_LAYOUT))
-    ? String(values.RENDER_LAYOUT)
-    : "standard";
+  const layout = normalizeLayout(values.RENDER_LAYOUT);
   const theme = CARD_THEMES.includes(String(values.RENDER_THEME))
     ? String(values.RENDER_THEME)
     : "dark";
@@ -71,6 +96,7 @@ export function renderOptions(values = {}) {
     enabled: boolValue(values.RENDER_ENABLED),
     theme,
     layout,
+    style: cardStyle(values),
     width: Number.isFinite(width) ? Math.max(520, Math.min(1080, Math.round(width))) : 720,
     accent_color: typeof values.RENDER_ACCENT_COLOR === "string" ? values.RENDER_ACCENT_COLOR : "",
     watermark: typeof values.RENDER_WATERMARK === "string" ? values.RENDER_WATERMARK : "",
@@ -97,6 +123,8 @@ export function buildPreviewOverrides(values = {}) {
     if (!Object.prototype.hasOwnProperty.call(values, key)) continue;
     overrides[name] = values[key];
   }
+  // 旧页面可能缓存了第五布局；只影响这一次预览，不借此切换全局 WebUI。
+  if (overrides.layout !== undefined) overrides.layout = normalizeLayout(overrides.layout);
   if (overrides.layout === "immersive") overrides.show_ai_summary = false;
   return overrides;
 }

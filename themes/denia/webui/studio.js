@@ -45,6 +45,7 @@ import {
   PREVIEW_OVERRIDES,
   OUTPUT_KEYS,
   buildPreviewOverrides,
+  normalizeLayout,
   boolValue as toBool,
 } from "./api.js";
 
@@ -339,7 +340,9 @@ function normalizeCardValue(key, value) {
     return String(value ?? "").trim().toUpperCase();
   }
   if (key === "RENDER_FONT_PATH") return String(value ?? "").trim();
-  if (key === "RENDER_THEME" || key === "RENDER_LAYOUT") return String(value || "");
+  if (key === "RENDER_THEME") return String(value || "");
+  // 布局只保存四种真实值；旧配置里的第五布局不再被写回。
+  if (key === "RENDER_LAYOUT") return normalizeLayout(value);
   return toBool(value);
 }
 
@@ -457,7 +460,7 @@ async function exportPreview() {
     const payload = await api.post("preview/sample", { preview: buildPreviewOverrides(currentCardValues()) });
     if (!payload?.data_url) throw new Error("服务器没有返回卡片图片");
     const ext = /^data:image\/(\w+)/.exec(payload.data_url)?.[1] || "png";
-    const layout = cardValue("RENDER_LAYOUT") || payload.layout || "card";
+    const layout = normalizeLayout(payload.layout || cardValue("RENDER_LAYOUT") || "card");
     downloadDataUrl(payload.data_url, `denia-card-${layout}.${ext === "jpeg" ? "jpg" : ext}`);
     S.sample = payload;
     toast("已导出服务器渲染的卡片原图");

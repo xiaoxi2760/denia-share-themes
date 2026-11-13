@@ -14,12 +14,13 @@ import {
   ago,
   date,
   layoutName,
+  cardStyleName,
   outputNote,
   status,
   contentType,
   names,
 } from "./core.js";
-import { CARD_LAYOUTS, CARD_THEMES, boolValue } from "./api.js";
+import { CARD_LAYOUTS, CARD_THEMES, boolValue, normalizeLayout } from "./api.js";
 import { platformIconUrl } from "./platform-icons.js";
 
 export const PLATFORM_COLORS = {
@@ -186,7 +187,8 @@ function themeButtons() {
 }
 
 function layoutButtons() {
-  return CARD_LAYOUTS.map((key) => `<button class="layout-choice" data-action="card-layout" data-key="${key}" aria-pressed="${cardValue("RENDER_LAYOUT") === key}"><span class="layout-glyph ${key}"></span>${layoutName(key)}</button>`).join("");
+  const current = currentLayout();
+  return CARD_LAYOUTS.map((key) => `<button class="layout-choice" data-action="card-layout" data-key="${key}" aria-pressed="${current === key}"><span class="layout-glyph ${key}"></span>${layoutName(key)}</button>`).join("");
 }
 
 function colorField(label, key, hint) {
@@ -212,9 +214,25 @@ function studioPreview() {
   return `<div class="preview-empty">${icon("card")}<p>调整设计后，这里会自动重新渲染样例。</p></div>`;
 }
 
+/* ---------------- 卡片风格跟随说明 ---------------- */
+
+/* 达妮娅不再是第五种布局，也不用静态样图充当预览：
+ * 卡片风格跟随已启用的 WebUI（已保存的 WEBUI_STYLE），布局只有四种，
+ * 预览一律走服务端 preview/sample 的真实渲染结果。 */
+
+function styleNote() {
+  const style = S.render.style || "classic";
+  return `<p class="subtle-note">卡片风格跟随当前启用的 WebUI：<b>${esc(cardStyleName(style))}</b>。` +
+    `四种布局都按这套风格出图；卡片明暗由「深色卡片 / 浅色卡片」单独决定，与页面明暗无关。</p>`;
+}
+
+function currentLayout() {
+  return normalizeLayout(cardValue("RENDER_LAYOUT"));
+}
+
 export function studio() {
   const render = S.render;
-  const immersive = cardValue("RENDER_LAYOUT") === "immersive";
+  const immersive = currentLayout() === "immersive";
   const draftCount = Object.keys(S.cardDraft).length;
   const accent = String(cardValue("RENDER_ACCENT_COLOR") ?? "");
   const swatches = ["#658c69", "#b67c62", "#7884a0", "#ae8092", "#3d4140"];
@@ -231,6 +249,7 @@ export function studio() {
         <h3>卡片形态</h3>
         <div class="layout-choices">${themeButtons()}</div>
         <div class="layout-choices" style="margin-top:8px">${layoutButtons()}</div>
+        ${styleNote()}
       </section>
       <section class="control-section studio-common">
         <h3>卡片强调色</h3>
