@@ -188,7 +188,7 @@ function themeButtons() {
 
 function layoutButtons() {
   const current = currentLayout();
-  return CARD_LAYOUTS.map((key) => `<button class="layout-choice" data-action="card-layout" data-key="${key}" aria-pressed="${current === key}"><span class="layout-glyph ${key}"></span>${layoutName(key)}</button>`).join("");
+  return CARD_LAYOUTS.map((key) => `<button class="layout-choice" data-action="card-layout" data-key="${key}" aria-pressed="${current === key}">${layoutName(key)}</button>`).join("");
 }
 
 function colorField(label, key, hint) {
@@ -248,7 +248,7 @@ export function studio() {
       <section class="control-section studio-common">
         <h3>卡片形态</h3>
         <div class="layout-choices">${themeButtons()}</div>
-        <div class="layout-choices" style="margin-top:8px">${layoutButtons()}</div>
+        <div class="layout-choices layout-options" style="margin-top:8px">${layoutButtons()}</div>
         ${styleNote()}
       </section>
       <section class="control-section studio-common">

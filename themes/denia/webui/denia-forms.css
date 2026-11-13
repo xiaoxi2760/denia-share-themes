@@ -170,9 +170,9 @@ main[data-view=workbench] .preview-shot{max-height:min(35vh,300px)}
 
 main:not([data-view=workbench]) .intro .eyebrow{display:none}
 main:not([data-view=workbench]) .intro{margin-bottom:14px}
-.studio-common:first-child .layout-choices:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
-.studio-common:first-child .layout-choices:last-child .layout-glyph{display:none}
-.studio-common:first-child .layout-choices:last-child .layout-choice{padding:7px 3px;white-space:nowrap}
+.studio-common:first-child .layout-options{grid-template-columns:repeat(4,minmax(0,1fr))}
+.studio-common:first-child .layout-options .layout-glyph{display:none}
+.studio-common:first-child .layout-options .layout-choice{padding:7px 3px;white-space:nowrap}
 .platform-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px}
 .platform-list .platform-row>.status{display:none}
 .platform-list .platform-row{min-width:0}
@@ -181,7 +181,7 @@ main:not([data-view=workbench]) .intro{margin-bottom:14px}
  .platform-list .platform-mark{width:24px;height:24px;font-size:11px}
  .platform-list .platform-row{gap:6px;padding:10px 2px}
 }
-@media(max-width:359px){.studio-common:first-child .layout-choices:last-child{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:359px){.studio-common:first-child .layout-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Keep the editing controls beside the canvas instead of across a wide void. */
 main[data-view=studio]{max-width:960px}

@@ -46,8 +46,8 @@ main[data-view=studio]{max-width:1120px}
 .atelier-settings .layout-glyph.light{background:linear-gradient(145deg,#fff,#f1eaf5)}
 .atelier-settings .layout-glyph.dark::before,.atelier-settings .layout-glyph.dark::after,
 .atelier-settings .layout-glyph.light::before,.atelier-settings .layout-glyph.light::after{content:none}
-.atelier-settings .studio-common:first-child .layout-choices:last-child{grid-template-columns:repeat(2,minmax(0,1fr))}
-.atelier-settings .studio-common:first-child .layout-choices:last-child .layout-choice{padding:8px 5px}
+.atelier-settings .studio-common:first-child .layout-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+.atelier-settings .studio-common:first-child .layout-options .layout-choice{padding:8px 5px}
 .atelier-settings .color-options{gap:10px}
 .atelier-settings .color-dot{width:25px;height:25px}
 .atelier-settings .field-control input[type=text]{min-height:34px;border-radius:8px}
@@ -87,7 +87,7 @@ main[data-view=studio]{max-width:1120px}
  .studio-layout>.studio-controls{height:auto;grid-template-rows:minmax(0,1fr) 64px;order:1}
  .atelier-settings{overflow:visible;scrollbar-gutter:auto;padding:14px}
  .studio-layout>.studio-board{height:390px;order:0;position:relative;top:auto}
- .atelier-settings .studio-common:first-child .layout-choices:last-child{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .atelier-settings .studio-common:first-child .layout-options{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 @media(max-width:600px){
  .preview-stage{height:410px;grid-template-columns:50px minmax(0,1fr);grid-template-rows:minmax(0,1fr) 30px;gap:10px;padding:12px}
@@ -103,7 +103,7 @@ main[data-view=studio]{max-width:1120px}
  .atelier-toolbar-actions{gap:8px}.atelier-toolbar .segment button{padding:5px 8px}
  .atelier-toolbar .sample-flag{display:none}.studio-board #studio-preview{padding:10px}
  .atelier-meta{padding:10px 12px;font-size:10px;gap:6px}.atelier-meta small{font-size:9px}
- .atelier-settings .studio-common:first-child .layout-choices:last-child{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .atelier-settings .studio-common:first-child .layout-options{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* Recent shares: readable covers, two desktop rows, consistent text baselines. */

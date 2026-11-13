@@ -14,13 +14,13 @@
 
 ## 本地构建与安装
 
-运行 `python build.py denia`，生成 `dist/denia-webui-1.1.0.zip` 和 SHA-256 校验文件。ZIP 根目录包含 `theme.json`、`webui/` 和许可文件 `LICENSE.txt`，不套仓库目录。
+运行 `python build.py denia`，生成 `dist/denia-webui-1.1.1.zip` 和 SHA-256 校验文件。ZIP 根目录包含 `theme.json`、`webui/` 和许可文件 `LICENSE.txt`，不套仓库目录。
 
 在插件经典界面的「配置 → 自设 WebUI」中导入该 ZIP；安装成功后，再将「WebUI 样式」切换为「达妮娅的泡泡工坊」并保存。尚未安装或资源加载失败时会使用经典界面，`?ui=classic` 始终可作临时恢复入口。
 
 以后发布远端主题包时，可在同一安装入口填写该 ZIP 的 HTTPS 直链与可选的 SHA-256，下载、校验后安装。不能直接使用整个 Git 仓库的源码 ZIP 替代单独的主题包。
 
-## 卡片与界面（1.1.0）
+## 卡片与界面（1.1.1）
 
 「卡片工坊」调用插件后端实时渲染，可选择标准、杂志、沉浸、信息流四种布局。预览与聊天发送使用同一渲染器，不携带静态卡片样稿。
 
