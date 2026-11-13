@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "denia",
+  "name": "达妮娅的泡泡工坊",
+  "version": "1.0.0",
+  "target_plugin": "astrbot_plugin_denia_share",
+  "webui_api": 1,
+  "mount": "studio",
+  "template": "index.html",
+  "entry": "studio.js"
+}

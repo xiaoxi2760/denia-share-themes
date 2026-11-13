@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "themes": [
+    {
+      "id": "denia",
+      "name": "达妮娅的泡泡工坊",
+      "version": "1.0.0",
+      "target_plugin": "astrbot_plugin_denia_share",
+      "manifest": "themes/denia/theme.json",
+      "archive_url": null,
+      "sha256": null
+    }
+  ]
+}
