@@ -9,6 +9,15 @@
       "manifest": "themes/denia/theme.json",
       "archive_url": null,
       "sha256": null
+    },
+    {
+      "id": "lily",
+      "name": "莉莉的梦境花园",
+      "version": "1.2.1",
+      "target_plugin": "astrbot_plugin_denia_share",
+      "manifest": "themes/lily/theme.json",
+      "archive_url": null,
+      "sha256": null
     }
   ]
 }

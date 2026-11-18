@@ -1,0 +1,88 @@
+{
+  "origin": "Original code-drawn stat glyphs for the Lily card skin (perfume bottle, lily, coin, dream star, notebook, paper plane, dream bell); no wiki images or character portraits included.",
+  "reference": "https://wuwa.huijiwiki.com/wiki/莉莉/档案; scent-note stat semantics per Lily persona pack",
+  "assets": [
+    {
+      "file": "stat-coin.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 3301
+    },
+    {
+      "file": "stat-danmaku.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1184
+    },
+    {
+      "file": "stat-favorite.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1286
+    },
+    {
+      "file": "stat-like.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1596
+    },
+    {
+      "file": "stat-reply.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1417
+    },
+    {
+      "file": "stat-share.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1726
+    },
+    {
+      "file": "stat-view.png",
+      "size": [
+        64,
+        64
+      ],
+      "bytes": 1419
+    }
+  ],
+  "backgrounds": [
+    {
+      "file": "white-veil-garden.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bytes": 1815113,
+      "origin": "Built-in ImageGen. Original artwork composed for the share-card canvas.",
+      "reference": "User-supplied Lily combat demo stills and video (BV1xK4x6EETN)",
+      "prompt": "Edit this portrait background for the white-veil version of Lily’s Dream Garden. Preserve the existing composition, text-safe center, iris-lilac palette, authentic long opalescent perfume vial, silver floral filigree, lilies, and ivory voile. Add unmistakable softly sculpted, desaturated purple cloudbanks: cluster softly layered violet rolls around the top-right lily and dissipate into sheer wisps rising from the vial along the left edge. The cloud highlights should feel like lavender fog lit from within, gentle and melancholic, with quiet legibility in the upper-left and center. Keep the whole bottom vial visible. No text, characters, or UI.",
+      "refinement_prompt": "Image 1 is the portrait background to edit. Image 2 is reference ONLY for a perfume vial's straight silhouette and opalescent glass. Make a surgical revision confined to the lowest 28% of Image 1. Preserve Image 1's frame and dimensions, upper 72% exactly, mood, dark or pale purple palette, upper-right flower shape, transparent veil, negative space, soft realism, fine detail. At the existing lower-left diagonal position, replace the broad drifting perfume bottle shape with an ORIGINAL very slim, absolutely straight test-tube-shaped perfume vial, about 6.5 times taller than diameter, with distinct long straight parallel side edges, cylindrical glass, smoothly rounded glass base, narrow diameter constant along its length. No swelling or curved body, point or taper, no wand tip, no bow-shaped container. Refractive translucent icy lilac glass, subtle iridescent pink-blue reflections, a fine silver botanical filigree collar and a tiny original flowerlike silver stopper with decorative etched details. Keep silver mostly at upper stopper and rounded lower tip, so the long transparent tubular center reads. It should lie diagonally just as in Image 1 but the vessel itself is completely straight. Preserve surrounding white lily and fabric. Include a small soft desaturated purple cloudbank woven into the LOWER RIGHT part of the canvas near the fabric, mostly at y=79–97%, with a quiet soft edge, cloudbanks natural and voluminous. The small cloudbank balances the vial, and will later be repurposed below a line of typography. No text, people, hands, UI or logos. White-veil art, cool airy pearl-lilac with a very lightly lit soft cloudbank."
+    },
+    {
+      "file": "black-veil-garden.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bytes": 1784663,
+      "origin": "Built-in ImageGen. Original artwork composed for the share-card canvas.",
+      "reference": "User-supplied Lily combat demo stills and video (BV1xK4x6EETN)",
+      "prompt": "Edit this portrait background for the black-veil version of Lily’s Dream Garden. Preserve the dark voile, the white lower lily and the existing elongated opalescent perfume vial with silver floral scrollwork in the lower left, the clear center, the palette and the edge wisps. Turn the upper-right white flower into a giant dreamy purple morning-glory-shaped trumpet flower, seen almost face-on, at the same placement and scale. Its lavender glass-like bell is translucent, with radial silver-violet veins and several ruffled, luminous tips. A cool moonlit bloom and a few fine particles drift down the right edge. Preserve the legible dark upper-left and center. Quiet, melancholic, high-end botanical photography. No letters, characters, or UI.",
+      "refinement_prompt": "Image 1 is the portrait background to edit. Image 2 is reference ONLY for a perfume vial's straight silhouette and opalescent glass. Make a surgical revision confined to the lowest 28% of Image 1. Preserve Image 1's frame and dimensions, upper 72% exactly, mood, dark or pale purple palette, upper-right flower shape, transparent veil, negative space, soft realism, fine detail. At the existing lower-left diagonal position, replace the broad drifting perfume bottle shape with an ORIGINAL very slim, absolutely straight test-tube-shaped perfume vial, about 6.5 times taller than diameter, with distinct long straight parallel side edges, cylindrical glass, smoothly rounded glass base, narrow diameter constant along its length. No swelling or curved body, point or taper, no wand tip, no bow-shaped container. Refractive translucent icy lilac glass, subtle iridescent pink-blue reflections, a fine silver botanical filigree collar and a tiny original flowerlike silver stopper with decorative etched details. Keep silver mostly at upper stopper and rounded lower tip, so the long transparent tubular center reads. It should lie diagonally just as in Image 1 but the vessel itself is completely straight. Preserve surrounding white lily and fabric. Include a small soft desaturated purple cloudbank woven into the LOWER RIGHT part of the canvas near the fabric, mostly at y=79–97%, with a quiet soft edge, cloudbanks natural and voluminous. The small cloudbank balances the vial, and will later be repurposed below a line of typography. No text, people, hands, UI or logos. Black-veil art, blackberry violet with a subdued luminous purple cloudbank that fits the moonlit ambience."
+    }
+  ]
+}

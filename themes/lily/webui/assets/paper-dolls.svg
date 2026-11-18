@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40">
+  <defs>
+    <!-- Sparkle filter / gradients -->
+    <linearGradient id="lilyDress" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="kuroBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4c3b6d"/>
+      <stop offset="100%" stop-color="#2a203f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Kuro (Dark Spirit Plushie) -->
+  <g transform="translate(18, 2)">
+    <!-- Ears -->
+    <polygon points="6,12 11,4 16,11" fill="#2a203f"/>
+    <polygon points="8,11 11,6 14,10" fill="#a78bfa" opacity="0.7"/>
+    <polygon points="26,11 31,4 36,12" fill="#2a203f"/>
+    <polygon points="28,10 31,6 34,11" fill="#a78bfa" opacity="0.7"/>
+    <!-- Round Body -->
+    <ellipse cx="21" cy="22" rx="16" ry="14" fill="url(#kuroBody)" stroke="#1e162f" stroke-width="1.2"/>
+    <!-- Face: Happy eyes -->
+    <path d="M14 20 Q16 18 18 20" stroke="#f5f3ff" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path d="M24 20 Q26 18 28 20" stroke="#f5f3ff" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <!-- Blushing cheeks -->
+    <ellipse cx="12" cy="23" rx="2" ry="1.2" fill="#f472b6" opacity="0.8"/>
+    <ellipse cx="30" cy="23" rx="2" ry="1.2" fill="#f472b6" opacity="0.8"/>
+    <!-- Tiny paws -->
+    <ellipse cx="16" cy="32" rx="3.5" ry="2" fill="#3b2d56"/>
+    <ellipse cx="26" cy="32" rx="3.5" ry="2" fill="#3b2d56"/>
+  </g>
+
+  <!-- Center: Lily (Chibi) -->
+  <g transform="translate(62, 0)">
+    <!-- Hair back -->
+    <path d="M12 16 C8 24 9 32 12 36 C16 36 20 34 20 30" fill="#8b5cf6" opacity="0.6"/>
+    <path d="M44 16 C48 24 47 32 44 36 C40 36 36 34 36 30" fill="#8b5cf6" opacity="0.6"/>
+    <!-- Dress -->
+    <path d="M20 25 L16 36 L40 36 L36 25 Z" fill="url(#lilyDress)" stroke="#6d28d9" stroke-width="1"/>
+    <ellipse cx="28" cy="36" rx="12" ry="2" fill="#7c3aed" opacity="0.5"/>
+    <path d="M22 25 Q28 27 34 25" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+    <!-- Head / Face -->
+    <ellipse cx="28" cy="17" rx="12" ry="10.5" fill="#fffdfa" stroke="#d4c7b8" stroke-width="0.8"/>
+    <!-- Lilac Bangs -->
+    <path d="M17 14 C20 18 24 18 28 15 C32 18 36 18 39 14 C39 10 33 7 28 7 C23 7 17 10 17 14 Z" fill="#c4b5fd"/>
+    <!-- Eyes -->
+    <ellipse cx="23" cy="18" rx="1.5" ry="2" fill="#4c1d95"/>
+    <circle cx="23.5" cy="17.3" r="0.6" fill="#ffffff"/>
+    <ellipse cx="33" cy="18" rx="1.5" ry="2" fill="#4c1d95"/>
+    <circle cx="33.5" cy="17.3" r="0.6" fill="#ffffff"/>
+    <!-- Smile & Blush -->
+    <path d="M26.5 21 Q28 22.5 29.5 21" stroke="#a78bfa" stroke-width="1" stroke-linecap="round" fill="none"/>
+    <ellipse cx="19.5" cy="20" rx="2" ry="1.2" fill="#f472b6" opacity="0.7"/>
+    <ellipse cx="36.5" cy="20" rx="2" ry="1.2" fill="#f472b6" opacity="0.7"/>
+    <!-- Lily Flower Hair Ornament (Right side) -->
+    <g transform="translate(37, 8) scale(0.7)">
+      <path d="M0 0 C-4 -6 0 -10 4 -8 C8 -6 6 0 0 0 Z" fill="#ffffff" stroke="#e2d6c6" stroke-width="0.8"/>
+      <path d="M0 0 C4 -6 10 -4 8 2 C6 6 0 4 0 0 Z" fill="#ffffff" stroke="#e2d6c6" stroke-width="0.8"/>
+      <path d="M0 0 C-6 -2 -8 4 -4 8 C-2 8 0 4 0 0 Z" fill="#ffffff" stroke="#e2d6c6" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="2.2" fill="#f59e0b"/>
+    </g>
+    <!-- Little Hands -->
+    <circle cx="17" cy="27" r="2" fill="#fffdfa"/>
+    <circle cx="39" cy="27" r="2" fill="#fffdfa"/>
+  </g>
+
+  <!-- Right: Shiro (White Spirit Plushie) -->
+  <g transform="translate(108, 2)">
+    <!-- Ears -->
+    <polygon points="6,12 11,4 16,11" fill="#ffffff" stroke="#d1c9be" stroke-width="1"/>
+    <polygon points="8,11 11,6 14,10" fill="#fed7aa" opacity="0.8"/>
+    <polygon points="26,11 31,4 36,12" fill="#ffffff" stroke="#d1c9be" stroke-width="1"/>
+    <polygon points="28,10 31,6 34,11" fill="#fed7aa" opacity="0.8"/>
+    <!-- Round Body -->
+    <ellipse cx="21" cy="22" rx="16" ry="14" fill="#ffffff" stroke="#d1c9be" stroke-width="1.2"/>
+    <!-- Face: Happy eyes -->
+    <path d="M14 20 Q16 18 18 20" stroke="#4c3b6d" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <path d="M24 20 Q26 18 28 20" stroke="#4c3b6d" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+    <!-- Blushing cheeks -->
+    <ellipse cx="12" cy="23" rx="2" ry="1.2" fill="#fb923c" opacity="0.75"/>
+    <ellipse cx="30" cy="23" rx="2" ry="1.2" fill="#fb923c" opacity="0.75"/>
+    <!-- Tiny paws -->
+    <ellipse cx="16" cy="32" rx="3.5" ry="2" fill="#f5f3ff" stroke="#d1c9be" stroke-width="0.8"/>
+    <ellipse cx="26" cy="32" rx="3.5" ry="2" fill="#f5f3ff" stroke="#d1c9be" stroke-width="0.8"/>
+  </g>
+</svg>

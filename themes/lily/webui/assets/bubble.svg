@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="body" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="55%" stop-color="#f3e8ff" stop-opacity="0.18"/>
+      <stop offset="82%" stop-color="#d8b4fe" stop-opacity="0.45"/>
+      <stop offset="96%" stop-color="#bae6fd" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.85"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#c084fc" stop-opacity="0.85"/>
+      <stop offset="65%" stop-color="#f472b6" stop-opacity="0.65"/>
+      <stop offset="85%" stop-color="#7dd3fc" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ddd6fe" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Main Sphere -->
+  <circle cx="60" cy="60" r="52" fill="url(#body)" stroke="url(#rim)" stroke-width="2"/>
+  <circle cx="60" cy="60" r="50" fill="url(#glow)"/>
+
+  <!-- Primary Glossy Curved Reflection (Top-Left) -->
+  <path d="M26 44 A 42 42 0 0 1 54 20" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" opacity="0.95"/>
+  <path d="M34 52 A 32 32 0 0 1 48 30" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Secondary Rim Reflection (Bottom-Right) -->
+  <path d="M92 78 A 40 40 0 0 1 76 96" fill="none" stroke="#fbcfe8" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Dream Sparkles Inside Bubble -->
+  <path d="M48 42 Q48 47 43 47 Q48 47 48 52 Q48 47 53 47 Q48 47 48 42 Z" fill="#ffffff" opacity="0.9"/>
+  <path d="M82 38 Q82 41 79 41 Q82 41 82 44 Q82 41 85 41 Q82 41 82 38 Z" fill="#fef08a" opacity="0.85"/>
+  <circle cx="68" cy="74" r="3" fill="#ffffff" opacity="0.8"/>
+  <circle cx="38" cy="70" r="2" fill="#e9d5ff" opacity="0.75"/>
+  <circle cx="78" cy="62" r="1.5" fill="#fbcfe8" opacity="0.8"/>
+</svg>

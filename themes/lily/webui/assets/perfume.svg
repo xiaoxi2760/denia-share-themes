@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140">
+  <defs>
+    <linearGradient id="flacon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ede4fb" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#c4a5f7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#7c5cd6" stop-opacity="0.95"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="mist" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#9d7fe0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <!-- Spray mist & dream sparkles -->
+  <g opacity="0.9">
+    <path d="M52 30 C38 20 22 14 8 18 C5 22 14 10 26 6 C38 2 48 12 54 24 Z" fill="url(#mist)"/>
+    <!-- Sparkle stars -->
+    <path d="M22 10 Q22 15 17 15 Q22 15 22 20 Q22 15 27 15 Q22 15 22 10 Z" fill="#fef08a"/>
+    <path d="M38 5 Q38 9 34 9 Q38 9 38 13 Q38 9 42 9 Q38 9 38 5 Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M10 26 Q10 29 7 29 Q10 29 10 32 Q10 29 13 29 Q10 29 10 26 Z" fill="#e9d5ff" opacity="0.85"/>
+    <circle cx="28" cy="20" r="2.2" fill="#fde047" opacity="0.85"/>
+    <circle cx="43" cy="16" r="1.5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="16" cy="16" r="1.2" fill="#c084fc" opacity="0.7"/>
+    <circle cx="34" cy="26" r="1" fill="#f472b6" opacity="0.75"/>
+  </g>
+  <!-- Perfume Flacon Body (Faceted Crystal Octagon) -->
+  <polygon points="40,54 80,54 94,68 94,112 80,126 40,126 26,112 26,68" fill="url(#flacon)" stroke="#a855f7" stroke-width="1.5"/>
+  <!-- Facet cut reflections -->
+  <polygon points="42,56 78,56 88,66 88,110 78,122 42,122 32,110 32,66" fill="#ffffff" fill-opacity="0.12"/>
+  <polygon points="46,62 74,62 82,72 82,104 74,114 46,114 38,104 38,72" fill="#6d48c7" fill-opacity="0.25" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1"/>
+  <!-- Front vertical crystal glint -->
+  <path d="M34 70 L42 64 L42 114 L34 108 Z" fill="#ffffff" fill-opacity="0.45"/>
+  <!-- Inner liquid bubble accents -->
+  <circle cx="52" cy="102" r="3.5" fill="#ffffff" fill-opacity="0.45"/>
+  <circle cx="68" cy="92" r="2.5" fill="#ffffff" fill-opacity="0.4"/>
+  <circle cx="58" cy="82" r="2" fill="#ffffff" fill-opacity="0.5"/>
+  <circle cx="46" cy="90" r="1.5" fill="#ffffff" fill-opacity="0.35"/>
+  <!-- Gold Neck / Collar -->
+  <rect x="52" y="42" width="16" height="12" rx="2" fill="url(#gold)" stroke="#92400e" stroke-width="0.8"/>
+  <rect x="48" y="50" width="24" height="4" rx="1.5" fill="url(#gold)"/>
+  <!-- Lilac Satin Ribbon Bow -->
+  <path d="M54 52 C46 48 42 56 52 54 C58 53 58 53 60 52 C62 53 62 53 68 54 C78 56 74 48 66 52 Z" fill="#f472b6"/>
+  <circle cx="60" cy="52" r="2.5" fill="#fbcfe8"/>
+  <path d="M58 54 L54 62" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M62 54 L66 62" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Crystal Atomizer Bulb / Stopper -->
+  <polygon points="54,28 66,28 72,34 72,40 66,42 54,42 48,40 48,34" fill="url(#flacon)" stroke="#c084fc" stroke-width="1"/>
+  <rect x="52" y="32" width="4" height="8" rx="1" fill="#ffffff" fill-opacity="0.6"/>
+  <circle cx="60" cy="35" r="2.5" fill="#ffffff" fill-opacity="0.55"/>
+  <!-- Label on bottle -->
+  <rect x="46" y="80" width="28" height="14" rx="2" fill="#ffffff" fill-opacity="0.9" stroke="#d8b4fe" stroke-width="0.8"/>
+  <text x="60" y="89.5" font-family="'Segoe UI', -apple-system, sans-serif" font-size="6.5" font-weight="700" fill="#7c5cd6" text-anchor="middle" letter-spacing="1">LILY</text>
+</svg>

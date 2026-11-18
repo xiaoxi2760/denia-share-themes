@@ -1,0 +1,678 @@
+/* 莉莉的梦境花园 · 莉莉专属设计系统 (Lily's Dream Garden)
+ * 鸣潮 3.8 共鸣者「莉莉」专属主题：雾紫织香 · 百合花束 · 琉璃香瓶 · 梦境星尘
+ */
+
+:root {
+  color-scheme: light;
+  --bg: #f8f5fc;
+  --surface: #fffdfef8;
+  --tint: #f1ecfa;
+  --ink: #2d2342;
+  --sub: #786c92;
+  --line: #e6ddf5;
+  --green: #7c5cd6;
+  --accent: #8b68ea;
+  --accent-hover: #704ecb;
+  --lime: #ede4fb;
+  --lime-ink: #50368a;
+  --gold: #f5b942;
+  --rose: #e89bbd;
+  --shadow: 0 20px 60px -30px rgba(94, 65, 144, 0.22), 0 4px 18px -6px rgba(94, 65, 144, 0.1);
+  --particle: url('./assets/bubble.svg');
+}
+
+html[data-theme=dark] {
+  color-scheme: dark;
+  --bg: #13101c;
+  --surface: #1d172efa;
+  --tint: #29203d;
+  --ink: #f1ecfa;
+  --sub: #aba0c4;
+  --line: #382c54;
+  --green: #b794f6;
+  --accent: #b794f6;
+  --accent-hover: #c9aaff;
+  --lime: #362952;
+  --lime-ink: #eedeff;
+  --gold: #fcd34d;
+  --rose: #f472b6;
+  --shadow: 0 24px 70px -30px rgba(6, 2, 14, 0.8), 0 4px 22px -6px rgba(106, 59, 181, 0.2);
+  --particle: url('./assets/perfume.svg');
+}
+
+/* 页面基底环境渐变 */
+body {
+  background:
+    radial-gradient(ellipse at 88% 2%, rgba(237, 228, 248, 0.65) 0%, transparent 54%),
+    radial-gradient(ellipse at 12% 90%, rgba(246, 234, 243, 0.45) 0%, transparent 45%),
+    var(--bg);
+  isolation: isolate;
+}
+
+html[data-theme=dark] body {
+  background:
+    radial-gradient(ellipse at 86% 6%, rgba(65, 40, 101, 0.35) 0%, transparent 58%),
+    radial-gradient(ellipse at 15% 92%, rgba(38, 23, 66, 0.3) 0%, transparent 50%),
+    var(--bg);
+}
+
+/* 动效关键帧 */
+@keyframes lily-float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(4deg); }
+}
+
+@keyframes lily-float-rev {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-5deg); }
+}
+
+@keyframes lily-glow-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.03); }
+}
+
+/* 顶栏与品牌 */
+.topbar {
+  height: 66px;
+  background: color-mix(in srgb, var(--bg) 84%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand strong {
+  font-weight: 720;
+  letter-spacing: -0.4px;
+}
+
+.brand-dot,
+.eyebrow,
+.workspace-foot .ok {
+  color: var(--accent);
+}
+
+.brand-dot {
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.brand img {
+  box-shadow: 0 0 0 3px var(--tint), 0 0 0 4px var(--line);
+}
+
+.brand small:after {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 9px;
+  margin-left: 8px;
+  background: url('./assets/paper-dolls.svg') center/contain no-repeat;
+  opacity: 0.85;
+  vertical-align: middle;
+}
+
+/* 导航链接与激活状态 */
+.navigation a[aria-current] {
+  color: var(--green);
+  font-weight: 650;
+}
+
+.navigation a[aria-current]:after {
+  height: 2.5px;
+  background: linear-gradient(90deg, #8b68ea, #b794f6);
+  box-shadow: 0 0 12px rgba(139, 104, 234, 0.45);
+}
+
+.nav-badge {
+  background: var(--green);
+  box-shadow: 0 2px 8px rgba(124, 92, 214, 0.35);
+}
+
+/* 浮动氛围粒子层 */
+.ambient-form {
+  position: fixed;
+  inset: 66px 0 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-form i {
+  position: absolute;
+  background: var(--particle) center/contain no-repeat;
+  width: 170px;
+  height: 190px;
+  right: -70px;
+  top: 22%;
+  opacity: 0.28;
+  animation: lily-float-slow 8s ease-in-out infinite;
+}
+
+.ambient-form i:nth-child(2) {
+  width: 80px;
+  height: 95px;
+  left: -35px;
+  top: 60%;
+  opacity: 0.32;
+  transform: rotate(16deg);
+  animation: lily-float-rev 7s ease-in-out infinite;
+}
+
+.ambient-form i:nth-child(3) {
+  width: 44px;
+  height: 52px;
+  right: 14%;
+  top: 84%;
+  opacity: 0.22;
+  animation: lily-float-slow 9s ease-in-out infinite;
+}
+
+html[data-theme=dark] .ambient-form i {
+  opacity: 0.16;
+}
+
+/* 主交互按钮 */
+.primary {
+  background: linear-gradient(135deg, #8b68ea 0%, #704ecb 100%);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 8px 24px -6px rgba(124, 92, 214, 0.42);
+  transition: all 0.18s ease;
+}
+
+.primary:hover {
+  background: linear-gradient(135deg, #9978f0 0%, #7b57d6 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px -6px rgba(124, 92, 214, 0.55);
+}
+
+.primary.lime {
+  background: var(--lime);
+  color: var(--lime-ink);
+  box-shadow: none;
+}
+
+.primary.lime:hover {
+  background: color-mix(in srgb, var(--lime) 88%, #c4a5f7);
+}
+
+html[data-theme=dark] .primary {
+  background: linear-gradient(135deg, #b794f6 0%, #8b5cf6 100%);
+  color: #171026;
+  font-weight: 650;
+  box-shadow: 0 8px 24px -6px rgba(183, 148, 246, 0.45);
+}
+
+html[data-theme=dark] .primary:hover {
+  background: linear-gradient(135deg, #c4a5f8 0%, #986df7 100%);
+  box-shadow: 0 10px 28px -6px rgba(183, 148, 246, 0.6);
+}
+
+html[data-theme=dark] .primary.lime {
+  background: #382a52;
+  color: #f1e9fc;
+}
+
+/* 顶部导览标题区 */
+.intro {
+  min-height: 104px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.intro h1 {
+  letter-spacing: -1.2px;
+}
+
+.eyebrow {
+  margin-bottom: 6px;
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
+  font-weight: 650;
+}
+
+.eyebrow:before {
+  height: 16px;
+  width: 16px;
+  background: var(--particle) center/contain no-repeat;
+  flex-shrink: 0;
+}
+
+main[data-view=workbench] .intro {
+  min-height: 154px;
+  margin-top: -4px;
+  margin-bottom: 16px;
+  gap: 20px;
+}
+
+/* 莉莉角色展台 (Hero Presence) */
+.lily-presence,
+.denia-presence {
+  position: relative;
+  flex: 0 0 380px;
+  height: 168px;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.character-window {
+  position: absolute;
+  inset: -6px -6px 0 36px;
+  overflow: clip;
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+}
+
+.character-window img {
+  position: absolute;
+  inset: auto 0 auto auto;
+  max-width: none;
+  width: 228px;
+  height: auto;
+  top: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(124, 92, 214, 0.15));
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.character-window .form-dark {
+  display: none;
+  filter: drop-shadow(0 10px 28px rgba(183, 148, 246, 0.3));
+}
+
+.dark-copy {
+  display: none;
+}
+
+html[data-theme=dark] .form-light,
+html[data-theme=dark] .light-copy {
+  display: none;
+}
+
+html[data-theme=dark] .form-dark,
+html[data-theme=dark] .dark-copy {
+  display: block;
+}
+
+/* 天体香轨光晕 */
+.form-orbit {
+  position: absolute;
+  inset: 16px 6px 10px 60px;
+  z-index: 0;
+  background: radial-gradient(ellipse at 60% 45%, rgba(224, 212, 246, 0.45), transparent 72%);
+}
+
+.form-orbit:before {
+  content: "";
+  position: absolute;
+  inset: 12px 10px 18px 24px;
+  border: 1px solid rgba(196, 170, 245, 0.38);
+  border-radius: 50%;
+  transform: rotate(-18deg) scaleY(0.72);
+}
+
+.form-orbit:after {
+  content: "";
+  position: absolute;
+  right: -12px;
+  top: 28px;
+  width: 220px;
+  height: 104px;
+  background: url('./assets/star-ring.svg') center/contain no-repeat;
+  opacity: 0.55;
+  transform: rotate(-10deg);
+  animation: lily-glow-pulse 6s ease-in-out infinite;
+}
+
+html[data-theme=dark] .form-orbit {
+  background: radial-gradient(ellipse at 60% 45%, rgba(137, 100, 189, 0.22), transparent 72%);
+}
+
+html[data-theme=dark] .form-orbit:before {
+  border-color: rgba(183, 148, 246, 0.28);
+}
+
+html[data-theme=dark] .form-orbit:after {
+  opacity: 0.4;
+}
+
+/* 角色展台浮动粒子 */
+.form-particle {
+  position: absolute;
+  background: var(--particle) center/contain no-repeat;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 10px rgba(124, 92, 214, 0.2));
+}
+
+.p1 {
+  width: 50px;
+  height: 56px;
+  left: 56px;
+  top: 20px;
+  animation: lily-float-slow 5s ease-in-out infinite;
+}
+
+.p2 {
+  width: 32px;
+  height: 36px;
+  right: 6px;
+  top: 54px;
+  animation: lily-float-rev 4.5s ease-in-out infinite;
+}
+
+.p3 {
+  width: 22px;
+  height: 26px;
+  left: 145px;
+  bottom: 12px;
+  z-index: 0;
+  animation: lily-float-slow 6.5s ease-in-out infinite;
+}
+
+html[data-theme=dark] .p1 {
+  width: 44px;
+  height: 50px;
+  left: 64px;
+  top: 26px;
+  transform: rotate(-10deg);
+}
+
+html[data-theme=dark] .p2 {
+  width: 30px;
+  height: 35px;
+  right: 8px;
+  top: 60px;
+  transform: rotate(10deg);
+}
+
+html[data-theme=dark] .p3 {
+  left: 155px;
+  bottom: 14px;
+  width: 20px;
+  height: 24px;
+}
+
+/* 展台标签文字与团子三人组 */
+.form-caption {
+  position: absolute;
+  left: 0;
+  bottom: 22px;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--accent);
+  line-height: 1.4;
+}
+
+.form-caption span {
+  font-size: 8.5px;
+  font-family: 'Segoe UI', -apple-system, sans-serif;
+  letter-spacing: 1.6px;
+  font-weight: 600;
+}
+
+.form-caption strong {
+  font-size: 22px;
+  font-weight: 350;
+  letter-spacing: 6px;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
+.form-caption:after {
+  content: "";
+  width: 58px;
+  height: 15px;
+  margin-top: 8px;
+  background: url('./assets/paper-dolls.svg') center/contain no-repeat;
+  opacity: 0.85;
+}
+
+/* 工作区与卡片工坊 */
+.preview-surface {
+  background:
+    radial-gradient(ellipse at 94% 6%, rgba(255, 255, 255, 0.7) 0%, transparent 60%),
+    #f4ecf8;
+}
+
+.preview-surface:before {
+  background-image: radial-gradient(rgba(157, 127, 224, 0.25) 0.7px, transparent 0.7px);
+  background-size: 14px 14px;
+  opacity: 0.55;
+}
+
+.preview-surface:after {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 145px;
+  right: -50px;
+  top: 36px;
+  background: var(--particle) center/contain no-repeat;
+  pointer-events: none;
+  opacity: 0.35;
+  transform: rotate(14deg);
+}
+
+html[data-theme=dark] .preview-surface {
+  background:
+    radial-gradient(ellipse at 92% 6%, rgba(103, 71, 142, 0.28) 0%, transparent 70%),
+    #211933;
+}
+
+html[data-theme=dark] .preview-surface:before {
+  background-image: radial-gradient(rgba(183, 148, 246, 0.22) 0.7px, transparent 0.7px);
+  opacity: 0.45;
+}
+
+html[data-theme=dark] .preview-surface:after {
+  opacity: 0.2;
+}
+
+/* 选项按钮高亮 */
+.output-option[aria-pressed=true] {
+  background: var(--tint);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.output-option[aria-pressed=true] .checkmark {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+html[data-theme=dark] .output-option[aria-pressed=true] {
+  background: #322547;
+  border-color: #7c5cd6;
+}
+
+html[data-theme=dark] .checkmark {
+  color: #171026;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.recent-item:hover .recent-title {
+  color: var(--green);
+}
+
+/* 卡片工坊看板 */
+.studio-board {
+  background-color: #f5f0fb;
+  background-image: radial-gradient(rgba(157, 127, 224, 0.22) 0.8px, transparent 0.8px);
+  background-size: 14px 14px;
+}
+
+html[data-theme=dark] .studio-board {
+  background-color: #191426;
+  background-image: radial-gradient(rgba(183, 148, 246, 0.18) 0.8px, transparent 0.8px);
+  background-size: 14px 14px;
+}
+
+/* 页脚 */
+.footer-brand,
+.footer-denia {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.form-mark {
+  display: block;
+  width: 18px;
+  height: 20px;
+  background: var(--particle) center/contain no-repeat;
+}
+
+.loading-shell:before,
+.empty-state:before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 50px;
+  margin: 0 auto 14px;
+  background: var(--particle) center/contain no-repeat;
+  animation: lily-float-slow 3.2s ease-in-out infinite;
+}
+
+/* 响应式适配 */
+@media(min-width: 1600px) {
+  .lily-presence,
+  .denia-presence {
+    flex-basis: 420px;
+  }
+  .character-window img {
+    right: 12px;
+  }
+}
+
+@media(max-width: 1000px) {
+  .lily-presence,
+  .denia-presence {
+    flex-basis: 300px;
+  }
+  .character-window {
+    left: 10px;
+    right: 0;
+  }
+  .character-window img {
+    width: 205px;
+    right: -4px;
+  }
+  .form-caption {
+    left: 0;
+    bottom: 18px;
+  }
+  .form-caption strong {
+    font-size: 18px;
+  }
+  .p1 { left: 14px; }
+  .p3 { left: 90px; }
+}
+
+@media(max-width: 800px) {
+  .intro {
+    min-height: 96px;
+    gap: 12px;
+  }
+  main[data-view=workbench] .intro {
+    min-height: 146px;
+    margin-top: -6px;
+    gap: 10px;
+  }
+  .lily-presence,
+  .denia-presence {
+    flex: 0 0 210px;
+    height: 146px;
+  }
+  .character-window {
+    inset: -4px -4px 0 0;
+  }
+  .character-window img {
+    width: 182px;
+    right: -4px;
+  }
+  .form-caption {
+    display: none;
+  }
+  .form-orbit {
+    inset: 10px 0 4px 8px;
+  }
+  .p1 { width: 36px; height: 42px; left: 0; top: 16px; }
+  .p2 { width: 22px; height: 26px; right: -2px; top: 52px; }
+  .p3 { display: none; }
+  .intro p { max-width: 350px; }
+}
+
+@media(max-width: 600px) {
+  main[data-view=workbench] .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 110px;
+    min-height: 138px;
+    margin-top: -4px;
+    gap: 6px;
+    align-items: center;
+  }
+  main[data-view=workbench] .intro > div:first-child {
+    width: 100%;
+    min-width: 0;
+  }
+  main[data-view=workbench] .intro h1 {
+    font-size: 24px;
+    line-height: 1.35;
+    max-width: 230px;
+  }
+  main[data-view=workbench] .intro p {
+    font-size: 11px;
+    max-width: 195px;
+    line-height: 1.7;
+  }
+  .lily-presence,
+  .denia-presence {
+    width: 110px;
+    height: 138px;
+    contain: paint;
+  }
+  .character-window {
+    inset: 0 -2px 0 -8px;
+    mask-image: linear-gradient(#000 82%, transparent);
+    -webkit-mask-image: linear-gradient(#000 82%, transparent);
+  }
+  .character-window img {
+    width: 148px;
+    right: -16px;
+    top: 4px;
+  }
+  .form-orbit {
+    inset: 4px -2px 4px 0;
+  }
+  .form-orbit:after {
+    display: none;
+  }
+  .p1 { width: 24px; height: 28px; left: 0; top: 22px; }
+  .p2 { width: 17px; height: 20px; right: -2px; top: 62px; }
+  .p3 { display: none; }
+}
+
+@media(max-width: 430px) {
+  .intro h1 {
+    font-size: 22px;
+    letter-spacing: -0.8px;
+  }
+  .intro p {
+    max-width: 200px;
+  }
+  .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+  .eyebrow:before {
+    width: 13px;
+    height: 14px;
+  }
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120">
+  <defs>
+    <linearGradient id="orbitRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#fef08a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="innerRing" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer tilted orbital ellipse -->
+  <ellipse cx="120" cy="60" rx="108" ry="46" fill="none" stroke="url(#orbitRing)" stroke-width="1.6" stroke-dasharray="8 4 2 4" transform="rotate(-10 120 60)"/>
+
+  <!-- Secondary fine ring -->
+  <ellipse cx="120" cy="60" rx="92" ry="38" fill="none" stroke="url(#innerRing)" stroke-width="1" stroke-dasharray="3 3" transform="rotate(-10 120 60)"/>
+
+  <!-- Tertiary inner ring -->
+  <ellipse cx="120" cy="60" rx="74" ry="30" fill="none" stroke="#ddd6fe" stroke-width="0.8" opacity="0.5" transform="rotate(-10 120 60)"/>
+
+  <!-- Orbital Sparkle Stars & Scent Drops along orbit -->
+  <g transform="rotate(-10 120 60)">
+    <!-- 8-point Dream Star (Right) -->
+    <path d="M228 60 Q228 64 224 64 Q228 64 228 68 Q228 64 232 64 Q228 64 228 60 Z" fill="#fef08a"/>
+    <circle cx="228" cy="64" r="1.5" fill="#ffffff"/>
+
+    <!-- 4-point Star (Top Left) -->
+    <path d="M48 24 Q48 28 44 28 Q48 28 48 32 Q48 28 52 28 Q48 28 48 24 Z" fill="#ffffff" opacity="0.9"/>
+
+    <!-- 4-point Star (Bottom Center) -->
+    <path d="M140 98 Q140 101 137 101 Q140 101 140 104 Q140 101 143 101 Q140 101 140 98 Z" fill="#f472b6" opacity="0.85"/>
+
+    <!-- Orbital Dew Beads -->
+    <circle cx="18" cy="60" r="3" fill="#c084fc" opacity="0.8"/>
+    <circle cx="90" cy="22" r="2" fill="#fde047" opacity="0.9"/>
+    <circle cx="170" cy="25" r="2.5" fill="#f472b6" opacity="0.75"/>
+    <circle cx="65" cy="94" r="2.2" fill="#818cf8" opacity="0.8"/>
+    <circle cx="205" cy="85" r="1.8" fill="#ffffff" opacity="0.9"/>
+  </g>
+</svg>
