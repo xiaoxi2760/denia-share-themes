@@ -1,10 +1,4 @@
-/* 莉莉工作台 · 视图模板（纯字符串，不含业务动作）。
- *
- * 新版的布局、角色双形态、泡泡/方块视觉都保留；所有内容都来自真实状态 S。
- * 没有任何演示 URL、假卡片或「示例解析完成」文案：无结果时只显示空态或
- * 服务端 sample_preview 返回的图片，并明确标注「样例 · 不创建记录」。
- */
-
+import { notebook } from "./notebook.js";
 import {
   S,
   esc,
@@ -48,6 +42,15 @@ const output = (key, label, glyph) => {
 
 const tabs = [["parse", "链接解析"], ["screenshot", "网页截图"]];
 
+export function homeImage() {
+  if (S.screenshot) return S.screenshot.data_url;
+  if (S.result) return S.result.card?.data_url;
+  if (S.busy || S.error) return null;
+  if (S.liveHomeSample) return S.homeSample?.data_url;
+  const veil = document.documentElement.dataset.theme === "dark" ? "black" : "white";
+  return asset(`pv-${veil}.webp`);
+}
+
 function workbenchPreview() {
   if (S.screenshot?.data_url) {
     return `<figure class="server-preview"><img class="preview-shot" src="${esc(S.screenshot.data_url)}" alt="服务器返回的网页截图"></figure>`;
@@ -61,9 +64,12 @@ function workbenchPreview() {
       return `<figure class="server-preview"><img class="preview-shot" src="${esc(S.result.card.data_url)}" alt="卡片预览的分享卡片"></figure>`;
     }
     if (!S.render.enabled) {
-      return `<div class="preview-empty">${icon("info")}<p><strong>卡片渲染总开关已关闭</strong></p><p>解析结果已返回，但服务端没有生成卡片图片。可在卡片工坊开启后再试。</p></div>`;
+      return `<div class="preview-empty">${icon("info")}<p><strong>卡片渲染总开关已关闭</strong></p><p>解析结果已返回，但服务端没有生成卡片图片。可在卡片装帧开启后再试。</p></div>`;
     }
     return `<div class="preview-empty preview-error">${icon("warning")}<p><strong>服务端没有返回卡片图</strong></p><p>内容已解析成功，但卡片渲染失败。请查看解析诊断或稍后重试。</p></div>`;
+  }
+  if (!S.liveHomeSample) {
+    return `<figure class="server-preview is-sample"><img class="preview-shot" src="${esc(homeImage())}" alt="莉莉《忘记恐惧》官方 PV 主题样张"></figure>`;
   }
   if (S.homeSample?.data_url) {
     return `<figure class="server-preview is-sample"><img class="preview-shot" src="${esc(S.homeSample.data_url)}" alt="样例卡片"></figure>`;
@@ -115,14 +121,17 @@ function recent(record) {
 export function workbench() {
   const ov = S.ov || { platforms: [], cache: {} };
   const enabled = ov.enabled_count || 0;
-  return intro(
-    "LILY’S DREAM GARDEN",
-    "好的，<span class=\"heading-tail\">链接交给我吧。</span>",
-    "视频、图文或音乐，织入属于你的香调。慢一点也没关系哦，随时开始解析。",
-    `<div class="lily-presence" aria-hidden="true"><div class="form-orbit"></div><div class="character-window"><img class="form-light" src="${asset("lily-light-pose.webp")}" alt="莉莉 · 织香"><img class="form-dark" src="${asset("lily-dark-pose.webp")}" alt="莉莉 · 绮梦"></div><span class="form-particle p1"></span><span class="form-particle p2"></span><span class="form-particle p3"></span><div class="form-caption"><span class="light-copy">SCENT OF DREAMS · 织香</span><span class="dark-copy">NIGHT ATELIER · 绮梦</span><strong>LILY</strong></div></div>`,
-  ) + `
+  return `<section class="garden-cover" aria-labelledby="cover-title">
+    <img class="cover-day" src="${asset("white-atelier.webp")}" alt="">
+    <img class="cover-night" src="${asset("black-atelier.webp")}" alt="">
+    <div class="cover-letter">
+      <p lang="en">Lily’s perfumery</p>
+      <h1 id="cover-title">绮梦织香</h1>
+      <a href="#/notebook">翻开调香手记 ${icon("book")}</a>
+    </div>
+  </section>
   <section class="workspace">
-    <div class="compose">
+    <div class="compose"><h2 class="folio-heading">链接工作台</h2>
       <div class="section-line">
         <div class="tabs" role="tablist" aria-label="工作模式">${tabs.map(([key, label]) => `<button role="tab" data-action="parse-mode" data-key="${key}" aria-selected="${S.parseMode === key}">${label}</button>`).join("")}</div>
         <button class="icon-button" data-action="paste" aria-label="从剪贴板粘贴">${icon("paste")}</button>
@@ -135,23 +144,24 @@ export function workbench() {
       </div>
       ${resultDetails()}
       <div class="output-section">
-        <div class="label-line"><span>发送什么</span><small>三种内容，自由组合</small></div>
+        <div class="label-line"><span>发送什么</span><small>可多选</small></div>
         <div class="output-options">${output("text", "文本", "text")}${output("card", "分享卡片", "card")}${output("media", "富媒体", "media")}</div>
         <p class="output-note">${outputNote()}</p>
       </div>
     </div>
     <aside class="preview-surface preview-stage">
       <div class="preview-rail preview-rail-left">
-        <div><strong>分享预览</strong><small>PREVIEW</small></div>
-        <div class="preview-rail-note"><span class="sample-flag">${S.result ? "解析结果" : S.screenshot ? "网页截图" : "样例"}</span><small>${S.result ? esc(layoutName(S.result.card?.layout || S.render.layout)) : S.screenshot ? esc(S.screenshot.size_text || "") : "不创建记录"}</small></div>
+        <div><strong>分享预览</strong></div>
+        <div class="preview-rail-note"><span class="sample-flag">${S.result ? "解析结果" : S.screenshot ? "网页截图" : S.liveHomeSample ? "插件试样" : "莉莉样张"}</span><small>${S.result ? esc(layoutName(S.result.card?.layout || S.render.layout)) : S.screenshot ? esc(S.screenshot.size_text || "") : S.liveHomeSample ? "当前配置" : "《忘记恐惧》"}</small></div>
       </div>
       <div class="preview-artboard" id="workbench-preview">${workbenchPreview()}</div>
       <div class="preview-rail preview-rail-right">
         <a href="#/studio" class="preview-editor-link">调整外观 ${icon("arrow")}</a>
         <div class="preview-rail-actions">
+          ${!S.busy && !S.result && !S.screenshot && !S.error ? `<button class="quiet-link" data-action="sample-mode">${S.liveHomeSample ? "查看莉莉样张" : "按配置试渲染"}</button>` : ""}
           ${S.result?.cache_key ? '<button class="quiet-link" data-action="rerender">重新渲染</button>' : ""}
-          <button class="button small" data-action="preview-card" data-preview="home" ${S.screenshot?.data_url || S.result?.card?.data_url || S.homeSample?.data_url ? "" : "disabled"}>${icon("search")}放大</button>
-          <small>${S.result?.card ? `${esc(S.result.card.width)} px` : S.screenshot ? "" : cardThemeLabel(S.render.theme, S.render.style)}</small>
+          <button class="button small" data-action="preview-card" data-preview="home" ${homeImage() ? "" : "disabled"}>${icon("search")}放大</button>
+          <small>${S.result?.card ? `${esc(S.result.card.width)} px` : S.screenshot || !S.liveHomeSample ? "" : cardThemeLabel(S.render.theme, S.render.style)}</small>
         </div>
       </div>
     </aside>
@@ -165,15 +175,15 @@ export function workbench() {
   </div>
   <section class="recent-area">
     <div class="section-line"><h2>最近的分享</h2><a class="quiet-link" href="#/library">查看全部 ${icon("arrow")}</a></div>
-    ${S.records.length ? `<div class="recent-grid">${S.records.slice(0, 6).map(recent).join("")}</div>` : `<div class="empty-state">${icon("link")}<h3>这里还空着</h3><p>解析过的内容会自动留存于此，慢慢来就好。</p></div>`}
+    ${S.records.length ? `<div class="recent-grid">${S.records.slice(0, 6).map(recent).join("")}</div>` : `<div class="empty-state">${icon("link")}<h3>这里还空着</h3><p>完成首次解析后，可以在这里重新打开分享。</p></div>`}
   </section>`;
 }
 
 export function library() {
   return intro(
     "DREAM ARCHIVE",
-    "寻香溯源，皆在此间。",
-    "曾在此处驻足的每一份分享，都为你静静封存。可以筛选记录、查看卡片或下载原图。",
+    "分享记录",
+    "按平台或关键词查找分享，查看卡片和原图。",
     `<span class="library-summary" id="library-summary">${S.library ? `共 ${S.library.total} 条记录` : "正在读取服务器记录…"}</span>`,
   ) + `<section class="outlet-panel"><div id="library-classic" class="classic-outlet" aria-live="polite"><p class="outlet-loading"><span class="spinner"></span> 正在载入分享记录…</p></div></section>`;
 }
@@ -235,8 +245,8 @@ export function studio() {
   const accent = String(cardValue("RENDER_ACCENT_COLOR") ?? "");
   const swatches = ["#7c5cd6", "#e89bbd", "#f5b942", "#5ea58e", "#3a3449"];
   return intro(
-    "SCENT & CARD ATELIER",
-    "卡片工坊",
+    "CARD BINDERY",
+    "卡片装帧",
     "选择形态和版式，预览分享卡片。",
     `<button class="button" data-action="export" ${S.sampleBusy ? "disabled" : ""}>${icon("download")}导出渲染图</button>`,
   ) + `
@@ -340,7 +350,7 @@ export function connections() {
   const ov = S.ov || { platforms: [], enabled_count: 0 };
   return intro(
     "PLATFORMS & CONNECTIONS",
-    "契约与凭据，各安其位。",
+    "平台与账号",
     "在这里管理平台开关、账号凭据、扫码登录和 CookieCloud 自动同步。",
     `<span class="library-summary">${ov.enabled_count || 0} / ${ov.platforms?.length || 0} 个平台已启用</span>`,
   ) + `
@@ -370,13 +380,13 @@ export function connections() {
 export function settings() {
   return intro(
     "ATELIER PREFERENCES",
-    "随心而定，如你所愿。",
-    "调控投递方式、解析习惯与工坊细节。慢一点也没关系，改好后保存即可。",
+    "设置",
+    "管理解析、投递和界面偏好。",
     `<a class="button" href="#/connections">账号与平台 ${icon("arrow")}</a>`,
   ) + `<section class="outlet-panel settings-frame"><div id="settings-classic" class="classic-outlet" aria-live="polite"><p class="outlet-loading"><span class="spinner"></span> 正在载入完整设置…</p></div></section>`;
 }
 
-export const views = { workbench, library, studio, connections, settings };
+export const views = { workbench, library, studio, notebook, connections, settings };
 
 /** 供控制器局部刷新（不重建已挂载的 classic 凭据面板）。 */
 export const partials = { platformRows, customParsers, workbenchPreview, studioPreview };

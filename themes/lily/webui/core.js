@@ -29,6 +29,8 @@ export const esc = (value) =>
   }[ch]));
 
 const iconPaths = {
+  book: '<path d="M3 4c3-1 6-1 9 1 3-2 6-2 9-1v15c-3-1-6-1-9 1-3-2-6-2-9-1zM12 5v15"/>',
+  list: '<path d="M7 5h13M7 12h13M7 19h13"/><circle cx="3" cy="5" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="19" r="1"/>',
   arrow: '<path d="M7 17 17 7M7 7h10v10"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/>',
@@ -60,9 +62,10 @@ export const icon = (name) =>
 export const asset = (name) => assetUrl(`./assets/${name}`);
 
 export const names = {
-  workbench: "工作台",
+  workbench: "调香台",
   library: "分享记录",
-  studio: "卡片工坊",
+  studio: "卡片装帧",
+  notebook: "调香手记",
   connections: "平台与账号",
   settings: "设置",
 };
@@ -89,6 +92,7 @@ export const S = {
   sample: null,
   sampleBusy: false,
   sampleError: "",
+  liveHomeSample: false,
   homeSample: null,
   homeSampleBusy: false,
   homeSampleError: "",
@@ -168,7 +172,7 @@ export const intro = (eyebrow, title, sub, aside = "") =>
 export function outputNote() {
   if (!Object.values(S.outputs).some(Boolean)) return "三种输出都已关闭，机器人不会发送解析内容。";
   if (!S.outputs.card) return "分享卡片未选中；文本与富媒体按各自开关独立生效。";
-  if (!S.render.enabled) return "卡片渲染总开关已关闭：即使选中分享卡片也不会发送卡片，请到卡片工坊开启。";
+  if (!S.render.enabled) return "卡片渲染总开关已关闭：即使选中分享卡片也不会发送卡片，请到卡片装帧开启。";
   return "文本、分享卡片与富媒体独立选择；卡片受「卡片渲染」总开关控制。";
 }
 
@@ -279,8 +283,8 @@ export function updateThemeButton() {
   const button = $("#theme-button");
   if (!button) return;
   const dark = document.documentElement.dataset.theme === "dark";
-  button.innerHTML = icon(dark ? "sun" : "moon");
-  button.setAttribute("aria-label", dark ? "切换为浅色主题" : "切换为深色主题");
+  button.innerHTML = icon(dark ? "moon" : "sun") + (dark ? "黑纱" : "白纱");
+  button.setAttribute("aria-label", dark ? "将界面切换为白纱" : "将界面切换为黑纱");
   button.title = prefs.theme_override === "follow" ? "跟随面板主题（点击改为固定主题）" : "切换主题";
 }
 

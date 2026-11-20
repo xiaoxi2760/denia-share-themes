@@ -5,41 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>莉莉的梦境花园</title>
-  <link rel="icon" data-shared-resource="brand/logo.png">
+  <link rel="icon" href="./assets/lily-seal.webp">
   <link rel="stylesheet" href="./studio.css">
-  <link rel="stylesheet" href="./lily-forms.css">
   <link rel="stylesheet" href="./workspace.css">
+  <link rel="stylesheet" href="./lily-forms.css">
 </head>
 <body>
-  <div class="ambient-form" aria-hidden="true"><i></i><i></i><i></i></div>
   <a class="skip-link" href="#main">跳到主要内容</a>
-  <header class="topbar">
-    <a class="brand" href="#/workbench" aria-label="莉莉的梦境花园">
-      <img data-shared-resource="brand/logo.png" hidden alt="">
-      <span><strong>莉莉的梦境花园<span class="brand-dot">.</span></strong><small>LILY'S DREAM GARDEN</small></span>
-    </a>
-    <nav class="navigation" aria-label="主导航">
-      <a href="#/workbench" data-nav="workbench">工作台</a>
-      <a href="#/library" data-nav="library">分享记录<span class="nav-badge" id="nav-badge" hidden>0</span></a>
-      <a href="#/studio" data-nav="studio">卡片工坊</a>
-      <a href="#/connections" data-nav="connections">平台与账号</a>
-      <a href="#/settings" data-nav="settings">设置</a>
+  <aside class="garden-index">
+    <a class="garden-brand" href="#/workbench"><img src="./assets/lily-seal.webp" alt=""><span><strong>莉莉的梦境花园</strong><small>Lily’s Dream Garden</small></span></a>
+    <nav class="garden-nav" aria-label="手记目录">
+      <a href="#/workbench" data-nav="workbench"><i data-glyph="link" aria-hidden="true"></i>调香台</a>
+      <a href="#/library" data-nav="library"><i data-glyph="list" aria-hidden="true"></i>分享记录<span class="nav-badge" id="nav-badge" hidden>0</span></a>
+      <a href="#/studio" data-nav="studio"><i data-glyph="card" aria-hidden="true"></i>卡片装帧</a>
+      <a href="#/notebook" data-nav="notebook"><i data-glyph="book" aria-hidden="true"></i>调香手记</a>
+      <a href="#/connections" data-nav="connections"><i data-glyph="shield" aria-hidden="true"></i>平台与账号</a>
+      <a href="#/settings" data-nav="settings"><i data-glyph="sliders" aria-hidden="true"></i>设置</a>
     </nav>
-    <div class="header-tools">
-      <span class="status" id="head-status" hidden></span>
-      <button class="icon-button" id="search-button" aria-label="搜索页面或配置（Ctrl K）" title="搜索 · Ctrl K"></button>
-      <button class="icon-button" id="theme-button" aria-label="切换为深色主题" title="切换主题"></button>
-    </div>
-  </header>
-  <main id="main" tabindex="-1"><div class="loading-shell">织香工坊正在准备中…</div></main>
-  <footer class="page-footer">
-    <span class="footer-brand"><i class="form-mark" aria-hidden="true"></i>莉莉的梦境花园</span>
-    <div class="footer-meta"><span data-connection>连接中…</span><span data-version></span></div>
-    <div class="footer-links"><a data-open-classic href="#" class="quiet-link">打开经典界面 ↗</a><span>LILY / DREAM GARDEN</span></div>
-  </footer>
+    <div class="garden-colophon"><a data-open-classic href="#">打开经典界面 ↗</a><span data-version></span></div>
+  </aside>
+  <div class="garden-leaf">
+    <header class="garden-toolbar">
+      <div class="garden-breadcrumb"><span>梦境花园</span><i aria-hidden="true">/</i><strong id="leaf-title">调香台</strong></div>
+      <div class="header-tools">
+        <span class="status" id="head-status" hidden></span>
+        <button class="icon-button" id="search-button" aria-label="搜索页面或配置（Ctrl K）" title="搜索 · Ctrl K"></button>
+        <button class="veil-button" id="theme-button" aria-label="切换界面纱色"></button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><div class="loading-shell">正在打开调香台…</div></main>
+    <footer class="garden-footer"><span>莉莉的梦境花园</span><span data-connection>连接中…</span></footer>
+  </div>
   <div id="toast" role="status" aria-live="polite"></div>
   <dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
-  <!-- classic 业务组件（分享记录 / 完整设置 / 凭据 / 诊断）的弹窗与提示挂载点 -->
   <div id="toast-host" class="toast-host" aria-live="polite"></div>
   <div id="modal-host" class="modal-host" hidden></div>
   <script type="module" src="./studio.js"></script>

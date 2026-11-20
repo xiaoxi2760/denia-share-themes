@@ -34,7 +34,7 @@ import {
   contentType,
   layoutName,
 } from "./core.js";
-import { views, partials } from "./views.js";
+import { views, partials, homeImage } from "./views.js";
 import { loadSharedResources, applySharedResources } from "../shared-resources.js";
 import { createCacheView } from "../classic/views/cache.js";
 import { createConfigView } from "../classic/views/config.js";
@@ -52,7 +52,7 @@ import {
 
 const route = () => {
   const key = location.hash.replace(/^#\/?/, "").split("?")[0];
-  return names[key] ? key : "workbench";
+  return Object.hasOwn(names, key) ? key : "workbench";
 };
 
 let current = null;
@@ -77,6 +77,7 @@ function disposeCurrent() {
 }
 
 function navState() {
+  $("#leaf-title").textContent = names[S.view];
   $$("[data-nav]").forEach((anchor) => {
     if (anchor.dataset.nav === S.view) anchor.setAttribute("aria-current", "page");
     else anchor.removeAttribute("aria-current");
@@ -89,6 +90,8 @@ function navState() {
   updateHead();
 }
 
+for (const glyph of $$("[data-glyph]")) glyph.innerHTML = icon(glyph.dataset.glyph);
+
 function updateHead() {
   const node = $("#head-status");
   if (node) {
@@ -97,7 +100,7 @@ function updateHead() {
     node.className = `status ${S.headKind || ""}`.trim();
   }
   const version = $("[data-version]");
-  if (version) version.textContent = S.version ? `v${S.version}` : "";
+  if (version) version.textContent = S.version ? `插件 v${S.version}` : "";
 }
 
 function render() {
@@ -150,7 +153,7 @@ async function mountView(gen) {
 
 async function mountWorkbench(gen) {
   hydrateThumbs(gen);
-  if (!S.busy && !S.result && !S.screenshot && !S.error &&
+  if (S.liveHomeSample && !S.busy && !S.result && !S.screenshot && !S.error &&
       (!S.homeSample || S.homeSample.theme !== S.render.theme || S.homeSample.layout !== S.render.layout) &&
       !S.homeSampleError && !S.homeSampleBusy) {
     await loadHomeSample(gen);
@@ -186,7 +189,7 @@ function updateWorkbenchPreview() {
   const host = $("#workbench-preview");
   if (host) host.innerHTML = partials.workbenchPreview();
   const zoom = $('[data-action="preview-card"][data-preview="home"]');
-  if (zoom) zoom.disabled = !(S.screenshot?.data_url || S.result?.card?.data_url || S.homeSample?.data_url);
+  if (zoom) zoom.disabled = !homeImage();
 }
 
 async function hydrateThumbs(gen) {
@@ -765,7 +768,7 @@ async function action(button) {
   switch (type) {
     case "preview-card": {
       const source = button.dataset.preview === "home"
-        ? S.screenshot?.data_url || S.result?.card?.data_url || S.homeSample?.data_url
+        ? homeImage()
         : S.sample?.data_url;
       if (source) dialog("卡片预览", `<img class="enlarged-preview" src="${esc(source)}" alt="分享卡片大图">`,
         '<button class="button" data-action="close">关闭</button>');
@@ -805,6 +808,11 @@ async function action(button) {
       break;
     case "rerender":
       await rerender();
+      break;
+    case "sample-mode":
+      S.liveHomeSample = !S.liveHomeSample;
+      S.homeSampleError = "";
+      render();
       break;
     case "retry-sample":
       S.homeSampleError = "";
@@ -1017,7 +1025,8 @@ function bindShell() {
     S.homeSampleError = "";
     S.homeSampleBusy = false;
     if (S.booted && S.view === "workbench" && !S.busy && !S.result && !S.screenshot && !S.error) {
-      loadHomeSample(viewGen);
+      if (S.liveHomeSample) loadHomeSample(viewGen);
+      else updateWorkbenchPreview();
     }
   });
   themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

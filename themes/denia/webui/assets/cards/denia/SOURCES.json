@@ -1,14 +1,16 @@
 {
-  "origin": "Original code-drawn ornaments and glyphs for this plugin; no wiki images or character portraits included.",
+  "origin": "Original code-drawn glyphs and ornaments. The painted ornaments are identified below.",
   "reference": "https://wuwa.huijiwiki.com/wiki/达妮娅/档案; user-provided headpiece silhouette reference",
   "assets": [
     {
       "file": "orange-cake.png",
       "size": [
-        320,
-        320
+        230,
+        144
       ],
-      "bytes": 32775
+      "bytes": 6703,
+      "origin": "Built-in ImageGen. Original painted card ornament.",
+      "prompt": "A beautifully art-directed hand-painted anime artbook spot illustration for Denia's bubble workshop. Delicately dimensional with painterly light and local color, warm-cool bounced light, tactile gouache and watercolor washes, elegant lost and found edges and confident silhouettes, premium illustrated stationery. Legible when reduced to a tiny chat card ornament. Single isolated composition with truly transparent surrounding and inside any empty spaces, some breathing room on all four sides. No lettering, frames, tags, watermark, backdrop, square paper or checkerboard. Reinterpret the reference flat cake motif as a delectable low wide three-quarter wedge of soft citrus chiffon shortcake on a tiny cream scalloped saucer, viewed just slightly from above. Three golden airy crumb layers, ivory whipped cream, thin marmalade seams, one thin translucent half-moon of candied orange and one tiny mint leaf. Soft rose-lavender contact shadow under the slice and a few tiny crumbs. Warm window light from upper left. A restrained pastry illustration with lively strokes. Wide horizontal composition, silhouette nearly fills it, approximate ratio 1.6:1."
     },
     {
       "file": "paper-dolls.png",
@@ -29,10 +31,12 @@
     {
       "file": "orbit-cube.png",
       "size": [
-        256,
-        256
+        245,
+        144
       ],
-      "bytes": 16936
+      "bytes": 3417,
+      "origin": "Built-in ImageGen. Original painted card ornament.",
+      "prompt": "A beautifully art-directed hand-painted anime artbook spot illustration for Denia's bubble workshop. Delicately dimensional with painterly light and local color, warm-cool bounced light, tactile gouache and watercolor washes, elegant lost and found edges and confident silhouettes, premium illustrated stationery. Legible when reduced to a tiny chat card ornament. Single isolated composition with truly transparent surrounding and inside any empty spaces, some breathing room on all four sides. No lettering, frames, tags, watermark, backdrop, square paper or checkerboard. Reinterpret the existing orbit cube as a beautifully dimensional, slightly tilted violet glass cube with three clear faces, dark faceted edges, periwinkle and soft cyan internal refractions. Two elegant tilted, foreshortened crossing elliptical orbital rings sweep behind and in front of the cube with accurate occlusion. Partly warm rose pearl light, a few tiny stars, elegant brushwork, isolated. Designed to sit on dark plum. Wide horizontal composition approximate ratio 1.7:1."
     },
     {
       "file": "bubble.png",
@@ -97,6 +101,38 @@
         64
       ],
       "bytes": 833
+    },
+    {
+      "file": "bubble-staff.png",
+      "origin": "Built-in ImageGen. Original painted card ornament.",
+      "prompt": "Edit image 1, the current isolated illustration of Denia's bubble staff. Image 2 is a visual reference for the staff identity and overall original character palette. Important user correction: the entire shaft from its left tip to the round head is a perfectly straight, plain unbroken pole. The midpoint currently has bulbous segmented metal decorations, collars, and a raised knot. ERASE ALL of them. Render the shaft as a single ruler-straight slender cylindrical rod with two perfectly parallel long edges, constant narrow diameter, smooth uninterrupted pale mauve-silver surface and one continuous lengthwise highlight, absolutely no breaks, knuckles, beads, rings, collars, screws, knots, diamond segments or joints anywhere along it. Leave the entire rod clearly visible across at least sixty percent of the image. Make the left tip a simple rounded end. Connect it cleanly directly to the outside of the round head; keep ornament, if any, strictly inside the rightmost head silhouette: no ribbon or bow wrapped around the shaft anywhere. Preserve the recognizable open silver crescent that cradles a rainbow bubble at upper right, its shape and hand-painted anime style, with two small soap bubbles floating by the head. Wide oblique composition from bottom left to upper right, isolated cutout in genuine alpha transparency; no person, text or background. The slender straight shaft is the central subject of the correction; keep it as simple as an unbroken conductor's baton.",
+      "size": [
+        450,
+        180
+      ],
+      "bytes": 5840,
+      "reference": "User-supplied official Denia character sheet and straight-shaft correction."
+    },
+    {
+      "file": "eclipse-halo.png",
+      "origin": "Built-in ImageGen. Original painted card ornament.",
+      "prompt": "Create an original hand-inked, gouache-colored anime game artbook spot illustration, with readable large silhouettes, selective edge light, supple varying line weights. No people, hands, text or logos, genuinely transparent background, no opaque wash outside the object. Wide horizontal canvas, entire subject clearly in frame, attractive at a small printed size. Draw ONLY the floating halo directly above Denia's head in both references, with a small accompanying star chart. Near the right side a slender orbital sigil, tilted slightly upward to the right: dark round eclipse disk, a very clear pearly FOUR-POINT star in its center, thin warm pink-gold and cyan rims around the vertical circular disk. From BOTH sides of the disk extend very long sweeping pointed crescent-like blue metal wings so the overall silhouette is an elongated eye, width 4 times the diameter of the disk. This is not a tiara on a person; it floats by itself. To its left and slightly below, connect five or six distinct pale blue pinprick stars using extremely fine broken silver lines to make one small legible angular branched constellation diagram which visually leads into the halo. Rich midnight blue, electric cyan, drops of violet and rosy warm light. Keep design simple enough to recognize on dark plum paper. No ice crystals, gemstone shards, planets, cubic objects or large surrounding background.",
+      "size": [
+        450,
+        118
+      ],
+      "bytes": 4853,
+      "reference": "User-supplied dark Denia screenshots (eye-shaped halo and four-point star)."
+    },
+    {
+      "file": "ribbon-bubbles.png",
+      "size": [
+        290,
+        193
+      ],
+      "bytes": 6933,
+      "origin": "Built-in ImageGen. Original painted card ornament.",
+      "prompt": "A beautifully art-directed hand-painted anime artbook spot illustration for Denia's bubble workshop. Delicately dimensional with painterly light and local color, warm-cool bounced light, tactile gouache and watercolor washes, elegant lost and found edges and confident silhouettes, premium illustrated stationery. Legible when reduced to a tiny chat card ornament. Single isolated composition with truly transparent surrounding and inside any empty spaces, some breathing room on all four sides. No lettering, frames, tags, watermark, backdrop, square paper or checkerboard. An airy asymmetric vignette of three irregular soap bubbles suspended above a thin loose curling blush satin ribbon; one large transparent bubble at upper right, two small satellites on the lower left. Pearl and apricot reflections broken by soft lilac and teal, colorful but almost clear soap film, selective glints and broad transparent body; warm directional light. Floating with no ground. The ribbon gently weaves between the bubbles, with one fine tail floating off to the lower right. Soft edges, especially left edge. Works on pale blush ground. Wide art (3:2)."
     }
   ]
 }
