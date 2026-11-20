@@ -25,7 +25,7 @@
 
 ### 第一步 · 拿到主题包
 
-在[主题发布页](https://github.com/xiaoxi2760/denia-share-themes/releases/tag/themes-2026-11-20)下载对应角色的 ZIP，直接看第二步。如果想从源码构建，可使用下列命令。
+在[主题发布页](https://github.com/xiaoxi2760/denia-share-themes/releases/tag/v1.1.0)下载对应角色的 ZIP，直接看第二步。如果想从源码构建，可使用下列命令。
 
 1. 在这个仓库页面点绿色的 **Code** 按钮，再点 **Download ZIP**。
 2. 把下载的文件解压。打开解压后的文件夹，在里面打开终端。终端就是输入命令的窗口。这一步需要电脑上装好 Python。

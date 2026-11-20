@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "lily",
   "name": "莉莉的梦境花园",
-  "version": "1.4.2",
+  "version": "1.1.0",
   "target_plugin": "astrbot_plugin_denia_share",
   "webui_api": 1,
   "mount": "studio",
