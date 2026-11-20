@@ -4,6 +4,7 @@ import { sharedResourceUrl } from "../shared-resources.js";
 const FILES = Object.freeze({
   bilibili: "bilibili.svg", douyin: "douyin.svg", kuaishou: "kuaishou.svg",
   weibo: "weibo.svg", xiaohongshu: "xiaohongshu.svg", twitter: "twitter.svg",
+  youtube: "youtube.png",
   github: "github.svg", pixiv: "pixiv.svg", steam: "steam.svg",
   acfun: "acfun.png", nga: "nga.png", xiaoheihe: "xiaoheihe.png",
   netease: "netease.png", qqmusic: "qqmusic.png",
